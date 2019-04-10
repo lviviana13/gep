@@ -1,0 +1,274 @@
+\documentclass{book}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{natbib}
+\usepackage{graphicx}
+
+
+\title{Tareas Geoestadística}
+\author{Laydi Viviana Bautista}
+\date{March 2019}
+
+
+\begin{document}
+
+\chapter{Apuntes de clase}
+
+El análisis geoestadístico inicio su desarrollo en Suráfrica en la década de los sesenta con trabajos experimentales en el campo minero. Su formulación matemática se origino con trabajos de Matheron en los setenta en la escuela de París.
+
+
+1.1 Pre-requisitos Estadísticos:
+    • Clasificación de las variables: Variables Cuantitativas, cualitativas, continuas y discretas.
+    • Escalas de Medición nominal, ordinal de intervalo y de razón o cociente.
+    • Espacios de Probabilidad, variables aleatorias.
+    • Funciones de densidad y de Distribución.
+    • Estimación puntual y por intervalo, contraste de hipótesis, intervalos de confianza
+    • Función Generadora de Momentos, Valor Esperado y Varianza de Variables Aleatorias
+    
+
+1.2 Modelo de Regresión Simple y Algunos Tópicos sobre Regresión. 
+    • Introducción e historia. Estructura. Explicación de los parámetros involucrados. Supuestos. Modelo visto observación por observación y de forma matricial.
+    • Estimación de Parámetros (mínimos cuadrados ordinarios y máxima verosimilitud).
+    • Propiedades de los estimadores: Insesgamiento, Mínima varianza, consistencia.
+    • Inferencia en el modelo de regresión lineal simple (máxima verosimilitud).
+    • Predicción: Propiedades, y Medidas de Bondad de ajuste: Coeficiente de determinación. Desarrollo algebraico y explicación conceptual. 
+    • Supuestos del Modelo (Bondad de Ajuste-Normalidad).
+    • Transformación BOX-COX, y uso de Variables Dummy ó Indicadoras.
+    • Series de Tiempo. Calculo de Autocovarianzas y Autocorrelaciones. 
+    • Aplicación Práctica.
+
+Unidad 2. Datos Espaciales, Análisis Exploratorio y Correlación Espacial Muestral
+
+2.1 Datos Espaciales y Análisis Exploratorio
+    • Estadística Espacial: Geoestadística, Lattices y Patrones Espaciales
+    • Datos Georreferenciados, Justificación del AED (Análisis Exploratorio de Datos) y Gráficos Exploratorios.
+    • Definiciones Básicas de Geoestadística: Variable Regionalizada. Momentos, Estacionariedad Fuerte e Intrínseca, y Isotropía e Anisotropía
+
+2.2 Funciones de Correlación Espacial, Métodos de Estimación y Ajuste
+    • Variograma y Semivariograma
+    • Covariograma y Correlograma
+    • Modelos Teóricos de Semivarianza
+    • Métodos de Estimación y Ajuste.
+    • Ejercicios.
+
+
+Unidad 3. Predicción Espacial.
+
+3.1 Métodos Kriging:
+    • Definición de Kriging y Kriging Puntual 
+    • Ordinario
+    • Simple
+    • Universal y Residual
+    • Bloques e Indicador
+    • LogNormal y Multigaussiano.
+    • Ejercicios y Aplicaciones
+
+3.2 Validación cruzada
+    • Validación cruzada (leave one out)
+    • Estadísticos de Bondad de Ajuste
+
+3.3 Métodos Determinísticos
+    • Distancia Inversa Ponderada
+    • Interpolación Polinomial Local
+    • Interpolación Polinomial Global
+    • Funciones de Base Radial
+    • Otros.
+    • Ejercicios y Aplicaciones
+
+Unidad 4. Tópicos Especiales y Casos Aplicados.
+
+4.1 Topicos Especiales
+    • Cokriging Ordinario 
+    • Kriging Probabilístico
+    • Kriging Factorial
+    • Diseño de Redes de Muestreo.
+    • Geoestadística Espacio Temporal.
+    • Lattices y Patrones Espaciales
+    • Ejercicios y aplicaciones
+
+4.2 Aplicaciones Geoestadísticas
+    • Estudios de Predicción de Precios de Viviendas (Terreno)
+    • Estudios de Variables de Radiación Solar y de Precipitación.
+    • Modelamiento de Partículas Contaminantes
+    • Modelamiento Digital de Terreno
+    • Modelamiento Variables Edáficas
+    • Estimación en Imágenes de Satélite
+    • Otras Aplicaciones
+
+
+Nosotros vamos a trabajr con algo llamada las variables regionalizadas $Z(S_i)$ y estás tienen las propiedades y son que: \begin{enumerate}
+    \item Georefenrenciada
+    \item Autocorrelacionada
+    \item Continuidad en el Espacio (en el Dominio)
+\end{enumerate}
+
+En datos de áre se necesitad 
+\begin{enumerate}
+    \item Shapefile
+    \item Información
+    \item Aquí no hablamos de continuidad
+\end{enumerate}
+
+en el proceso puntual necesitamos 
+\begin{enumerate}
+    \item Dato georeferenciado
+    \item Marca -> Z
+    \item Esque de asociación espacial (Modelo de dependencia espacial)
+    \item Continuidad
+\end{enumerate}
+
+
+
+
+\section{Variable Aleatoria} Sea S un espacio muestral sobre el que se encuentra definida una función de probabilidad. Sea X una función de valor real definida sobre S, de manera que transforme los resultados de S en puntos sobre la recta de los reales. Se dice entonces que X es una variable Aleatoria.
+Se dice que X es “aleatoria” porque involucra la probabilidad de los resultados del espacio muestral, y X es una función definida sobre el es espacio muestral, de manera que transforma todos los posibles resultados del espacio muestral en cantidades numéricas
+
+\section{Función de Probabilidad}
+En general, una variable aleatoria discreta X representa los resultados de un espacio muestral en forma tal que por P(X=x) se entenderá la probabilidad de que X tome el valor de x. De esta forma, al considerar los valores de una variable aleatoria es posible desarrollar una función matemática que asigna una probabilidad a cada realización x de la variable aleatoria X, que se conoce la función de probabilidad para el caso discreto y f.d.p para el caso continuo. 
+
+
+\section{Distribución de probabilidad} 
+El términos más general, distribución de probabilidad, se refiere a la colección de valores de la variable aleatoria y a la distribución de probabilidades entre éstos, hacer la mención de la distribución de probabilidad implica la existencia de la función de probabilidad y la función de distribución acumulativa de X.
+
+NOTA: Si tenemos una distribución de frecuencias a esta le podemos sacar las medidas estadísticas, ahora, si tenemos una distribución de probabilidades también podemos  sacar dichas medidas, así por ejemplo hablar del valor esperada que es lo análogo a la media, o bien sacar la varianza, la mediana, etc.
+
+NOTA 2: En la vida real nunca conoceremos el modelo de probabilidad (función de probabilidad) lo que hacemos es hallar uno aproximado mediante la interpretación de una muestra.
+
+\section{Valor esperado}
+El valor esperado de una variable aleatoria X es el promedio o valor medio de X. 
+
+NO es una función de X sino un número fijo y una propiedad de la distribución De probabilidad de X y puede no existir dependiendo de si la correspondiente suma o integral no converge en una valor finito. 
+
+\subsection{Propiedades del valor esperado}
+\begin{enumerate}
+    \item $E(c) = c$. El valor esperado de un constante $c$ es el valor de la constante.
+    \item $E(aX+b)=aE(X)+b$. El valor esperado de $aX + b$, en donde $a$ y $b$ son constantes, es el producto de $a$ por el valor esperado de $x$ más $b$. 
+    \item  $E(g(x)+h(x)) = E(g(x)) + E(h(x))$. El valor esperado de la suma de dos funciones $g(x)$ y $h(x)$ de $X$ es la suma de los valores esperados de $g(x)$ y $h(x)$.
+\end{enumerate}
+
+
+\section{Momentos} Son una colección de medidas descriptivas, y la importancia radica en que permiten caracterizar la distribución de probabilidad de una variable aleatoria.
+
+A pesar de que los momentos de X pueden definirse alrededor de cualquier punto de referencia, generalmente se definen alrededor del cero o del valor esperado de X. 
+ 
+\subsection{Momento de $X$ alrededor de cero} 
+Sea X una variable aleatoria. El r-ésimo momento de $X$ alrededor del cero se define por:
+$$\mu'_r = E(X^r)=\underset{x}{\sum}x^rP(x)$$ si $X$ es discreta o $$\mu'_r=E(X^r)=\int_{-\infty}^{\infty}x^rf(x) dx$$ si $X$ es continua.
+
+
+\begin{enumerate}
+    \item Si $r=0 \rightarrow \mu_0= E(1) = 1$
+    \item Si $r=1 \rightarrow \mu_1= E(X) \therefore $ el primer momento alrededor de cero es la media o valor esperado de la variable aleatoria
+\end{enumerate}
+
+\subsection{Momento de $X$ alrededor de la media} 
+
+Sea X una variable aleatoria. El r-ésimo momento central de $X$ o el r-ésimo momento alrededor de la media se define por:
+$$\mu'_r = E(X - \mu)^r=\underset{x}{\sum}(x-\mu)^rP(x)$$ si $X$ es discreta o $$\mu'_r=E(X-\mu)^r=\int_{-\infty}^{\infty}(x-\mu)^rf(x) dx$$ si $X$ es continua.
+
+\begin{itemize}
+    \item Si $r=0 \rightarrow \mu_0= E(X-\mu)^0=E(1) = 1$
+    \item Si $r=1 \rightarrow \mu_1= E(X-\mu) = E(X)-\mu = \mu - \mu =0$
+    \item Si $r=2 \rightarrow \mu_2= E(X-\mu)^2 = \sigma^2 \therefore $ el segundo momento alrededor de la media es la varianza de la variable aleatoria.
+\end{itemize}
+
+
+
+\section{Función Generadora de Momentos}
+Hay distintas formas para determinar los momentos de una variable aleatoria dada su distribución de probabilidad pero un método alternativo es la función generadora de momentos.
+
+Sea X una variable aleatoria. El valor esperado de $exp(tX)$ recibe el nombre de función generadora de momentos, y se denota por $m_x(t)$, si el valor esperado existe para cualquier valor de $t$ en algún intervalo $-c < t <c$ en donde $c$ es un número positivo. 
+$$m_x(t)=E[exp(tX)]=\underset{x}{\sum}exp(tX)p(x)$$  si X es discreta o $$m_x(t)=E[exp(tX)]=\int_{-\infty}^\infty exp(tX)p(x)$$ si X es continua.
+
+Si la función generadora de momentos existe, puede demostrarse que es única y que determina por completo la distribución de probabilidad de X. En otras palabras, si dos variables aleatorias tiene la misma función generadora de momentos, entonces tienen la misma distribución de probabilidad. 
+
+si la función generadora de momentos existe para $-c < t < c$, entonces existen las derivadas de ésta de todas los ordenes para t=0. Lo anterior asegura que $m_x(t)$ generará todos los momentos de $X$ alrededor del origen. 
+
+\begin{itemize}
+    \item $m_x(t=0) = E[exp(0X)]= = E(e^0) = E(1)=1$
+    \item $\frac{dm_x(t)}{dt}|_{t=0} = \frac{d}{dt}$
+\end{itemize}
+
+La noción de función generadora puede extenderse a otros puntos de referencia, además del origen. por ejemplo la función central generadora de momentos es la que generará todos los momentos centrales de una distribución de probabilidad.
+
+\subsection{Función central generadora de momentos}
+
+\section{Síntesis}
+\subsection{Variable Aleatoria Discreta} Se dice que una variables aleatoria X es discreta si el número de valores que puede tomar es contable (ya sea infinito o infinito), y si éstos pueden arreglarse en una secuencia que corresponde con los enteros positivos
+
+Def: Sea $X$ una v.a discreta. se llamará a $p(x)=P(X=x)$ función de probabilidad de la v.a $X$, si satisface las siguientes propiedades:
+
+\begin{enumerate}
+    \item $P(x)\geq 0$ para todos los valores x de X.
+    \item $\underset{x}{\sum}P(x)=1$
+\end{enumerate}
+
+
+La función de distribución acumulativa de la v.a $X$ es la probabilidad de que $X$ sea menor o igual a un valor específico de $x$ y está dada por: $$F(x)=(X\leq x)=\underset{x_i \leq x}{\sum} P(x_i)$$
+
+Función Generadora de Momentos
+$$m_x(t)=E[exp(tX)]=\underset{x}{\sum}exp(tX)p(x)$$
+
+
+\subsection{Variable Aleatoria Continua} Se dice que una variable aleatoria X es continua si sus valores consisten en uno o más intervalos de la recta de los reales. 
+
+Función Generadora de Momentos:
+$$m_x(t)=E[exp(tX)]=\int_{-\infty}^\infty exp(tX)p(x)$$
+
+\section{Varianza}
+La varianza de una variable aleatoria $X$ es una medida  de la dispersión de la distribución de probabilidad de está.\\
+ 
+
+\subsection{propiedades}
+
+\begin{itemize}
+    \item $V(c) = 0$. La varianza de una constante c es cero.
+    \item $V(aX) = a^2V(x)$. La varianza es afectada por cambio de escala
+    \item $V(X+b) = V(X)$ La varianza no es afectada por traslaciones
+\end{itemize}
+
+\subsection{Teorema}
+
+$\sigma^2=  E(X-\mu)^2 \\
+ = E(X^2 - 2X\mu +\mu^2) \\
+ =E(X^2)-2E(X)E(\mu) + \mu^2\\
+ =E(X^2)-2\mu^2 +\mu^2 \\
+ =E(X^2)- \mu^2$
+
+\section{Correlación}
+
+$\rho_{xy}= \frac{Cov(x,y)}{\sqrt{V(X)}\sqrt{V(y)}} = cos (\theta) = \frac{}{}$
+
+
+\section{Varianza  la Combinación Lineal}
+Sean $X_1, X_2, ..., X_n $ variables aleatorias y $a_1,a_2,..., a_n$ constantes que pertenecen a los reales entonces
+
+$var(a_1X_1+a_2x_2+...+a_nX_n) = a_1^2 V(X_1) + ... + a_2^2 V(X_2) + 2a_1a_2 Cov(X_1,X_2) + ... +  2a_1a_2 Cov(X_1,X_n)+...+ 2a_n a_{n-1} Cov(X_n,X_{n-1})$
+
+$$
+\begin{pmatrix}
+Cov(X_1, X_1) & Cov(X_1,X_2) & Cov(X_1,X_2)  \\
+Cov(X_2, X_1) & Cov(X_2,X_2) & Cov(X_3,X_2)  \\
+Cov(X_3, X_1) & Cov(X_3,X_2) & Cov(X_3,X_2)   
+\end{pmatrix}
+$$
+
+Demostración por inducción, tenemos 
+
+$Var(a_1X_1+a_2X_2)=$
+
+
+
+
+
+
+
+\section{Covarianza}
+
+ 
+
+
+\bibliographystyle{plain}
+\bibliography{references}
+\end{document}
