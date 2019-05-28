@@ -15,95 +15,17 @@
 
 \chapter{Apuntes de clase}
 
-El análisis geoestadístico inicio su desarrollo en Suráfrica en la década de los sesenta con trabajos experimentales en el campo minero. Su formulación matemática se origino con trabajos de Matheron en los setenta en la escuela de París.
 
 
-1.1 Pre-requisitos Estadísticos:
-    • Clasificación de las variables: Variables Cuantitativas, cualitativas, continuas y discretas.
-    • Escalas de Medición nominal, ordinal de intervalo y de razón o cociente.
-    • Espacios de Probabilidad, variables aleatorias.
-    • Funciones de densidad y de Distribución.
-    • Estimación puntual y por intervalo, contraste de hipótesis, intervalos de confianza
-    • Función Generadora de Momentos, Valor Esperado y Varianza de Variables Aleatorias
-    
-
-1.2 Modelo de Regresión Simple y Algunos Tópicos sobre Regresión. 
-    • Introducción e historia. Estructura. Explicación de los parámetros involucrados. Supuestos. Modelo visto observación por observación y de forma matricial.
-    • Estimación de Parámetros (mínimos cuadrados ordinarios y máxima verosimilitud).
-    • Propiedades de los estimadores: Insesgamiento, Mínima varianza, consistencia.
-    • Inferencia en el modelo de regresión lineal simple (máxima verosimilitud).
-    • Predicción: Propiedades, y Medidas de Bondad de ajuste: Coeficiente de determinación. Desarrollo algebraico y explicación conceptual. 
-    • Supuestos del Modelo (Bondad de Ajuste-Normalidad).
-    • Transformación BOX-COX, y uso de Variables Dummy ó Indicadoras.
-    • Series de Tiempo. Calculo de Autocovarianzas y Autocorrelaciones. 
-    • Aplicación Práctica.
-
-Unidad 2. Datos Espaciales, Análisis Exploratorio y Correlación Espacial Muestral
-
-2.1 Datos Espaciales y Análisis Exploratorio
-    • Estadística Espacial: Geoestadística, Lattices y Patrones Espaciales
-    • Datos Georreferenciados, Justificación del AED (Análisis Exploratorio de Datos) y Gráficos Exploratorios.
-    • Definiciones Básicas de Geoestadística: Variable Regionalizada. Momentos, Estacionariedad Fuerte e Intrínseca, y Isotropía e Anisotropía
-
-2.2 Funciones de Correlación Espacial, Métodos de Estimación y Ajuste
-    • Variograma y Semivariograma
-    • Covariograma y Correlograma
-    • Modelos Teóricos de Semivarianza
-    • Métodos de Estimación y Ajuste.
-    • Ejercicios.
 
 
-Unidad 3. Predicción Espacial.
-
-3.1 Métodos Kriging:
-    • Definición de Kriging y Kriging Puntual 
-    • Ordinario
-    • Simple
-    • Universal y Residual
-    • Bloques e Indicador
-    • LogNormal y Multigaussiano.
-    • Ejercicios y Aplicaciones
-
-3.2 Validación cruzada
-    • Validación cruzada (leave one out)
-    • Estadísticos de Bondad de Ajuste
-
-3.3 Métodos Determinísticos
-    • Distancia Inversa Ponderada
-    • Interpolación Polinomial Local
-    • Interpolación Polinomial Global
-    • Funciones de Base Radial
-    • Otros.
-    • Ejercicios y Aplicaciones
-
-Unidad 4. Tópicos Especiales y Casos Aplicados.
-
-4.1 Topicos Especiales
-    • Cokriging Ordinario 
-    • Kriging Probabilístico
-    • Kriging Factorial
-    • Diseño de Redes de Muestreo.
-    • Geoestadística Espacio Temporal.
-    • Lattices y Patrones Espaciales
-    • Ejercicios y aplicaciones
-
-4.2 Aplicaciones Geoestadísticas
-    • Estudios de Predicción de Precios de Viviendas (Terreno)
-    • Estudios de Variables de Radiación Solar y de Precipitación.
-    • Modelamiento de Partículas Contaminantes
-    • Modelamiento Digital de Terreno
-    • Modelamiento Variables Edáficas
-    • Estimación en Imágenes de Satélite
-    • Otras Aplicaciones
-
-
-Nosotros vamos a trabajr con algo llamada las variables regionalizadas $Z(S_i)$ y estás tienen las propiedades y son que: \begin{enumerate}
+Nosotros vamos a trabajar con algo llamada las variables regionalizadas $Z(S_i)$ y estás tienen las propiedades y son que: \begin{enumerate}
     \item Georefenrenciada
     \item Autocorrelacionada
     \item Continuidad en el Espacio (en el Dominio)
 \end{enumerate}
 
-En datos de áre se necesitad 
+En datos de área se necesita: 
 \begin{enumerate}
     \item Shapefile
     \item Información
@@ -218,6 +140,8 @@ $$m_x(t)=E[exp(tX)]=\int_{-\infty}^\infty exp(tX)p(x)$$
 
 \section{Varianza}
 La varianza de una variable aleatoria $X$ es una medida  de la dispersión de la distribución de probabilidad de está.\\
+
+$$V(X) = E(X - E(X))^2 = =  E(X-\mu)^2 =E(X^2)- \mu^2$$
  
 
 \subsection{propiedades}
@@ -238,13 +162,69 @@ $\sigma^2=  E(X-\mu)^2 \\
 
 \section{Correlación}
 
-$\rho_{xy}= \frac{Cov(x,y)}{\sqrt{V(X)}\sqrt{V(y)}} = cos (\theta) = \frac{}{}$
+$\rho_{xy}= \frac{Cov(x,y)}{\sqrt{V(X)}\sqrt{V(y)}} = cos (\theta) = \frac{\overrightarrow{x} \cdot \overrightarrow{y}}{||X || ||y||}$
+
+Cuando $\theta = 0$ la correlación es $1$, si $\theta=90°$ los vectores son ortogonales y podemos decir que son independientes y la correlación es $0$. y si $\theta=180°$ la correlación es $-1$
+
+\section{Covarianza}
+
+$Cov(x,y) = E[(x - E(x))(y-E(y))]$ \\
+
+$Cov(x,x) = E[(x - E(x))(x-E(x))] =  E(x-E(x))^2 = V(x) $
+
+\subsection{Propiedades}
+$Cov(ax,y) = E[(ax - E(x))(y-E(y))]$ \\
+$ = a E[(x - E(x))(y-E(y))] = aCov(x,y) $ \\
+\\
+$Cov(ax,by) = E[(ax - E(x))(by-E(y))]$ \\
+$ = ab E[(x - E(x))(y-E(y))] = abCov(x,y) $ \
+
+
+
+\section{Varianza de X y Y}
+
+$V(X + Y)$ \\
+$= E[(x+y) - E(x+y)]^2$\\
+$= E[x+y-E(x)-E(y)]^2$\\
+$= E[x-E(x) + y -E(y)]$\\
+$= E[(x-E(z))^2 + 2*(x-E(x))*(y -E(y)) + (y -E(y))^2 ]$\\
+$=  V(x) + 2Cov(x,y) + V(y)$
+
+
+\subsection{Propiedades}
+$V(aX + bY)$ \\
+$= E[(ax+by) - E(ax+by)]^2$\\
+$= E[ax+by-aE(x)-bE(y)]^2$\\
+$= E[a(x-E(x)) + b(y -E(y))]$\\
+$= E[a^2(x-E(z))^2 + 2ab*(x-E(x))*(y -E(y)) + b^2(y -E(y))^2 ]$\\
+$=  a^2V(x) + 2abCov(x,y) + b^2V(y)$
 
 
 \section{Varianza  la Combinación Lineal}
-Sean $X_1, X_2, ..., X_n $ variables aleatorias y $a_1,a_2,..., a_n$ constantes que pertenecen a los reales entonces
+Sean $X_1, X_2, ..., X_n $ variables aleatorias y $a_1,a_2,..., a_n$ constantes que pertenecen a los reales entonces:
 
-$var(a_1X_1+a_2x_2+...+a_nX_n) = a_1^2 V(X_1) + ... + a_2^2 V(X_2) + 2a_1a_2 Cov(X_1,X_2) + ... +  2a_1a_2 Cov(X_1,X_n)+...+ 2a_n a_{n-1} Cov(X_n,X_{n-1})$
+$Var(a_1X_1+a_2x_2+...+a_nX_n) = a_1^2 V(X_1) + ... + a_2^2 V(X_2) + 2a_1a_2 Cov(X_1,X_2) + ... +  2a_1a_2 Cov(X_1,X_n)+...+ 2a_n a_{n-1} Cov(X_n,X_{n-1})$
+
+Esto se relaciona con la matriz de varianzas-covarianzas de la siguiente forma, echele ojo
+
+$$
+\begin{pmatrix}
+a_1 a_1 Cov(X_1, X_1) &  a_1 a_2 Cov(X_1,X_2)   \\
+a_2 a_1 Cov(X_2, X_1) & a_2 a_2 Cov(X_2,X_2)  
+\end{pmatrix}
+$$
+
+$$
+\begin{pmatrix}
+a_1^2 V(x_1) &  a_1 a_2 Cov(X_1,X_2)   \\
+a_2 a_1 Cov(X_2, X_1) & a_2^2 V(X_2)  
+\end{pmatrix}
+$$
+recuerde que $Cov(x_1,x_2) = Cov(x_2,x_1) $
+
+Entonces pues mire: 
+
+$Var(a_1X_1+a_2X_2)= a_1^2V(x_1) + 2a_1a_2 Cov(x_1,x_2) + a_2^2V(x_2)$
 
 $$
 \begin{pmatrix}
@@ -254,19 +234,8 @@ Cov(X_3, X_1) & Cov(X_3,X_2) & Cov(X_3,X_2)
 \end{pmatrix}
 $$
 
-Demostración por inducción, tenemos 
-
-$Var(a_1X_1+a_2X_2)=$
 
 
-
-
-
-
-
-\section{Covarianza}
-
- 
 
 
 \bibliographystyle{plain}

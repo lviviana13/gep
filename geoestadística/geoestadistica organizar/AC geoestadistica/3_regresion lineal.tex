@@ -1,0 +1,32 @@
+\documentclass{book}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{natbib}
+\usepackage{graphicx}
+
+
+\title{Tareas Geoestadística}
+\author{Laydi Viviana Bautista}
+
+\begin{document}
+
+\section{Regresión Lineal}
+Esto nos permite evaluar si hay tendencia en el espacio
+$$y_i = \beta_0 + \beta_1 X_{1i} + ... + \beta_k X_{ki} + e_i$$
+Establecemos una serie de supuestos que vienen dados por el error:
+
+\subsection{Supuestos}
+
+\begin{itemize}
+    \item $E(e_i)=0$
+    \item $E(e_i^2)=\sigma^2 \longrightarrow$  Homocedasticidad
+    \item $e_i \sim N(0, \sigma^2) \longrightarrow$  Normalidad\footnote{Cuando no existe normalidad una de las cosas que a veces se hace es quitar datos, sin embargo, realizar esto en un analisis espacial resulta completo porque son datos que literalmente existe, lo que se hace en estos casos es quitar los datos para encontrar el modelo y luego volver a ingresar los datos, también se usa métodos como el Box-Cox}
+    \item $E(e_i,e_i) 0 0 \longrightarrow$  No Autocorrelación
+    
+\end{itemize}
+
+
+
+
+\end{document}

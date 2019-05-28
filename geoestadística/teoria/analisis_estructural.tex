@@ -1,0 +1,43 @@
+\section{Análisis Estructural}
+
+Para llevar a cabo esta fase, se usan tres funciones: El semivariograma, el covariograma y el correlograma.  
+
+\subsection{Variograma y Semivariograma}
+
+Cuando se asume que la varianza de los incrementos de la variable regionalizada es finita, se le define como variograma denotada por $2\gamma(h)$ 
+
+\begin{equation*}
+\begin{aligned}
+   2\gamma(h) & = V(Z(\chi + h)) - Z(\chi))\\
+  & = E((Z(x + h) - Z(x))^2) - (E(Z(X + h) - Z(x)))^2 \\
+  & = E((Z(x + h) - Z(x))^2)
+\end{aligned}
+\end{equation*}
+
+La mitad del variograma $\gamma(h)$, se conoce como la función de semivarianza y caracteriza las propiedades de dependencia espacial del proceso. 
+
+\begin{equation*}
+\begin{aligned}
+   \gamma(h)  = \frac{\Sigma(Z(\chi + h) - Z(\chi))^2}{2n}
+\end{aligned}
+\end{equation*}
+
+
+donde $\gamma(h) $ es el valor de la variable en un sitio $\chi$, $\Sigma(Z(\chi + h) $ es otro valor muestral separado del anterior por una distancia $h$ y $n$ es el número de parejas que se encuentran separas por dicha distancia. La función de semivarianza se calcula para varias distancias $h$. En la práctica, debido a irregularidad en el muestreo y por ende en las distancias entre los sitios, se toman intervalor de distancia $[0,h], (h,2h], (2h, 3h]$... y el semivariograma experimental corresponde a una distancia promedio entre parejas de sitios dentro de cada intervalo y no a una distancia $h$ específica. El número de parejas de puntos $n$ dentro de los intervalos no es constante.
+
+Para interpretar el semivariograma experimental se parte del criterio de que a menor distancia entre los sitios mayor similitud o correlación espacial entre las observaciones. Por ello en presencia de autocorrelación se espera que para valores de h pequeños el semivariograma experimental tenga magnitudes menores a las que este toma cuando las distancias h se incrementan.
+
+\subsection{Covariograma}
+
+
+
+
+\subsection{Correlograma}
+El programa que al parecer lo tiene eso en R es gsf
+
+
+TAREA: POCKET PLOT 
+
+
+
+

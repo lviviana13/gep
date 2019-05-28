@@ -1,0 +1,38 @@
+\chapter{MODELOS ESTOCÁSTICOS PARA VECTORES ALEATORIOS}
+
+\section{Distribución Normal Multivariante}
+Un vector aleatorio 
+$y = 
+\begin{pmatrix}
+y_1 \\
+y_2 \\
+... \\
+y_n \\
+\end{pmatrix}
+$,  con vector de medias 
+$ \mu = 
+\begin{pmatrix}
+\mu_1 \\
+\mu_2 \\
+... \\
+\mu_n \\
+\end{pmatrix}
+$
+y de matriz de varianzas 
+$$ \Sigma = 
+\begin{pmatrix}
+Cov(X_1, X_1) & Cov(X_1,X_2) & ...  & Cov(X_1,X_n)  \\
+Cov(X_2, X_1) & Cov(X_2,X_2) & ..  & Cov(X_2,X_n) \\
+... & ... & ..   & ...\\
+Cov(X_nk, X_1) & Cov(X_n,X_2) &...    & Cov(X_n,X_n)
+\end{pmatrix}
+$$ 
+
+con  $y \sim N(\mu, \sigma^2)$  dada por 
+$$
+f(y) = \sqrt{(\frac{1}{2 \pi})^n det\Sigma}  \exp{\{ \frac{-1}{2} (y - \mu)^t \Sigma^{-1} (y - \mu) \}}
+$$
+
+
+sigue una distribución normal. 
+

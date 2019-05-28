@@ -1,0 +1,79 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{natbib}
+\usepackage{graphicx}
+
+
+\title{Varianza del vector estocástico}
+\author{Laydi Viviana Bautista}
+\date{Mayo 2019}
+
+
+
+\begin{document}
+
+\maketitle
+
+
+\begin{tabular}{|c|c|c|c|c|}
+    \hline
+     Observación & x & y & Z & $\lambda$ \\ 
+    \hline
+    1 & 0 & 0 & 10 & 0 \\
+    2 & 100 & 0 & 12 & 0,5 \\
+    3 & 0 & 100 & 14 & 0,5 \\
+    4 & 100 & 100& 16 & 0 \\ 
+    \hline
+\end{tabular} \\
+
+$$
+\begin{pmatrix}
+Cov(X_1, X_1) & Cov(X_1,X_2) & Cov(X_1,X_3)  & Cov(X_1,X_4)  \\
+Cov(X_2, X_1) & Cov(X_2,X_2) & Cov(X_2,X_3)   & Cov(X_2,X_4) \\
+Cov(X_3, X_1) & Cov(X_3,X_2) & Cov(X_3,X_3)    & Cov(X_3,X_4)\\
+Cov(X_4, X_1) & Cov(X_4,X_2) & Cov(X_4,X_3)    & Cov(X_4,X_4)
+\end{pmatrix}
+$$
+\\
+
+El modelo es 
+
+$$C(h) = C_1 e^{-h / 10}$$
+donde $C_1 = 1$
+
+entonces: 
+
+Para $Cov(z_1,z_1)$ tenemos $h=0$ por lo tanto $C(0) = C_1 e^{-0 / 10} = C_1 = 1 = Cov(z_2,z_2) = Cov(z_3,z_3) = Cov(z_4,z_4) $  
+
+
+
+$$
+\begin{pmatrix}
+1 & Cov(X_1,X_2) & Cov(X_1,X_3)  & Cov(X_1,X_4)  \\
+Cov(X_2, X_1) & 1 & Cov(X_2,X_3)   & Cov(X_2,X_4) \\
+Cov(X_3, X_1) & Cov(X_3,X_2) & 1   & Cov(X_3,X_4)\\
+Cov(X_4, X_1) & Cov(X_4,X_2) & Cov(X_4,X_3)  & 1
+\end{pmatrix}
+$$
+
+
+Para $Cov(z_1,z_2)$ tenemos $h=100$: 
+$C(100) = C_1 e^{-100 / 10} = 0.00004539
+
+Para $Cov(z_1,z_3)$ tenemos $h=141.42135$: 
+$C(100) = C_1 e^{-141.42135/ 10} =0.000000721
+
+$$
+\Sigma_z =
+\begin{pmatrix}
+1 & 0.00004539 & 0.000000721 & 0.00004539  \\
+0.00004539 & 1 & 0.00004539   & 0.000000721  \\
+0.000000721 & 0.00004539  & 1   & 0.00004539 \\
+0.00004539  & 0.000000721 & 0.00004539  & 1
+\end{pmatrix}
+$$
+
+$$Var(\lambda^t Z) = \lambda^T \Sigma_Z \lambda  = Var(\lambda^t Z) = 0.5$$
+\end{document}
