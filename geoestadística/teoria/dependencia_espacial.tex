@@ -7,14 +7,45 @@ en la relación de sus valores. \cite{giraldo}
 
 \subsection{Test de Moran}
 
-Este test es especialmente usado en datos de áreas. Sean $Z(s_1 ), · · · , Z(s_n)$, las variables medidas en las $n$ áreas. La noción de autocorrelación espacial de estas variables está asociada con la idea de que valores observados en áreas geográficas adyacentes serán más similares que los esperados bajo el supuesto de independencia espacial. El ı́ndice de autocorrelación de Moran considerando la información de los vecinos más cercanos es definida
+Este test es especialmente usado en datos de áreas. Sean $Z(s_1 ), ... , Z(s_n)$, las variables medidas en las $n$ áreas. La noción de autocorrelación espacial de estas variables está asociada con la idea de que valores observados en áreas geográficas adyacentes serán más similares que los esperados bajo el supuesto de independencia espacial. El índice de autocorrelación de Moran considerando la información de los vecinos más cercanos es definida
 como:
 
-$$ I = \frac{n}{\Sigma}$$
+$$ I = \frac{n}{\Sigma_{i=1}^{n} \Sigma_{j=1}^{n} W_{ij}}\frac{\Sigma_{i=1}^{n} \sigma_{j=1}^{n} W_{ij}(Z(s_i) - \overline{Z})(Z(s_j) - \overline{Z}) }{\Sigma_{i=1}^{n}  (Z(s_i) - \overline{Z})^2 }$$
 
 Valores positivos (entro 0 y 1) indican autocorrelación directa (similitud entre valores cercanos) y valores negativos (entre -1 y 0) indican autocorrelación inversa (disimilitud entre las áreas cercanas). Valores del coeficiente cercanos a cero apoyan la hipótesis de aleatoriedad espacial.
 
 Para el cálculo del índice de Moran es necesario definir la proximidad entre las áreas. Lo anterior se lleva a cabo por medio del cálculo de una matriz de proximidad espacial. 
+
+Dado un conjunto de n áreas $(A_1, ..., A_n)$ se construye una matriz $W$ de orden $(n x n)$ donde cada uno de los elemnetos $W_{ij}$ representa una medida de proximidad entre $A_i$ y $A_j$. Dicha medida puede ser calculada con alguno de los siguientes criterios:
+
+\begin{itemize}
+    \item $W_{ij} = 1$  si el centro de $A_i$ se encuentra a una distancia determinada de $A_j$ o $W_{ij}=0$ en caso contrario
+    \item $W_{ij} = 1$ si $A_i$ comparte frontera con $A_j$ y en caso contrario $W_{ij}=0$ 
+    \item $W_{ij} = \frac{I_{ij}}{I_i}$, donde $I_{ij}$ es la longitud de la frontera entre $A_i$ y $A_j$ y $I_i$ es el perímetro de $A_i$ 
+    \item $W_{ij} = d_{ij}$, con $d_{ij}$ la distancia entre los centro de las dos áreas
+\end{itemize}
+
+Lógicamente, $W_{ii}=0$. La idea de la matriz de proximidad espacial puede ser generalizada a vecino de mayor orden (vecinos de vecinos) construyéndose. Se acostumbra a normalizar las filas de la matriz, es decir que la suma por fila de los $W_{ij}$ sea igual a uno.
+
+
+Una vez obtenido el valor del coeficiente es necesario evaluar su significación estadística. En otras palabras se requiere probar la hipótesis de aleatoriedad espacial con base en el valor observado. Para llevar a cabo esto es necesario establecer la correspondiente distribución de probabilidad de la estadística de prueba $I$
+
+Bajo normalidad, es decir asumiendo $Z(s_1), ..., Z(s_n)$ con $Z(s_i) \sim N(\mu, \sigma^2)$, la estadística 
+
+$$Z = \frac{I - E(I)}{\sqrt{V(I)}}$$
+
+Sigue una distribución normal estándar, en la que el valor esperado y la varianza está dados por
+
+$$E(I) = -\frac{1}{(n+1)},  V(I)= \frac{n^2S_1-n^2S_2 + 3S^2_0}{(n^2-1)S^2_o} -\frac{1}{(n+1)^2} $$
+
+donde:
+
+\begin{eqnarray*} 
+S_0 = \Sigma_{i \neq j}^nW_{ij};  S_1 =  \Sigma_{i \neq j}^n (W_{ij} + W_{ji})^2;   S_2 = \Sigma_{i = j}^n (W_{i0} + W_{0i})^2, \nonumber\\ W_{i0}= \Sigma_{j=1}^n W_{ij};  W_{0i}= \Sigma_{j=1}^n W_{ji} 
+\end{eqnarray*}
+
+
+\cite{giraldo}
 
 
 

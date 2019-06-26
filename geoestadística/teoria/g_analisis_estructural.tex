@@ -1,0 +1,159 @@
+\subsubsection{Análisis Estructural}
+
+Generalmente en la práctica sólo se dispone de un conjunto ${Z(S_1, ... , S_n)}$  de observaciones del proceso aleatorio ${Z(s), s \in D}$ que pueden distribuirse de forma regular sobre una rejilla o de forma irregular sobre la región de estudio $D \subseteq \mathbb{E}^d$. Por lo tanto, sólo se dispone de una única realización incompleta del proceso aleatorio que se quiere analizar, por lo que sería necesario asumir algún tipo de hipótesis simplificadora de la naturaleza del proceso que asegure cierta regularidad en los datos y permita hacer estimaciones e inferencias del modelo a partir de los datos observados. Esta condición es la de estacionariedad, que permite que el proceso se repita a si mismo en el espacio, proporcionando la replicación necesaria para la estimación e inferencia del modelo. (Melo, 2012) \cite{melo}
+
+
+\paragraph{Estacionario}
+Se dice que un proceso es estrictamente estacionario (estacionario en sentido fuerte) si, para cualquier conjunto de localizaciones en $D$, la función de distribución conjunta de las variables aleatorias permanece invariable ante una traslación, como esta condición es demasiado restrictiva para la mayoría de los fenómenos observados en la naturales, se necesita algún tipo de relajación de la misma, como la estacionariedad de segundo orden, y esto sucede cuando la función media existe y no depende de la localización, esto es, $\mu(S_i) =  \mu,  \forall  S_i \in D $. Y la función de covarianza existe y sólo depende de la distancia entre las localizaciones involucradas, esto es, $C(s_i,s_j) = C(h), \forall s_i, s_j \in D$, siendo $h=s_i-s_j$ el vector distancia entre dichas localizaciones.
+
+La estacionariedad de segundo orden implica que la varianza del proceso no depende de la localización, es decir, que $$Var(Z(s))=C(0)= \mu^2, \forall s \in D$$ donde $C(0)$ recibe el nombre de varianza a priori del proceso.
+
+Por otro lado, se dice que el proceso $Z(S)$ es intrínsecamente estacionario si, la función media existe y no depende de la localización, 
+
+\paragraph{Isotrópico} Un proceso $Z(s)$ es isotrópico si la dependencia espacial del proceso entre dos localizaciones cualesquiera depende únicamente de la distancia existente entre ellas y no de su localización. En caso contrario se dice que el proceso es anisotrópico
+
+\paragraph{Homogéneo}  Un proceso $Z(s)$ es homogéneo si es intrínsicamente estacionario o isotrópico
+
+
+En el análisis estructural, lo que se busca es la presencia de  isotropía, que se asocia a la variabilidad y comportamiento de los datos en el espacio, así como también se busca la presencia de tendencia. En cuanto a la
+tendencia, que se asocia a $\mu$, lo que se busca es constancia, así que si se observa alguna tendencia se recomienda diferenciar la serie de datos, si el problema radica en la presencia de anisotropía, es decir que la correlación entre los datos depende de la dirección en la que esta se calcule, se recomienda realizar una transformación, para que
+no se presente variabilidad en los datos, la cual se relaciona directamente con $\sigma^2$. 
+
+Estos dos elementos, variabilidad y tendencia, se asocian a una estacionariedad, que es la finalidad de esta etapa, si el resultado muestra ausencia de estacionariedad, en la siguiente etapa del análisis obtendremos un modelo de ruido blanco, por lo que es indispensable volverlo estacionario, usando la diferenciación o la transformación.
+
+
+Recordemos que los datos no se consideran independientes, por el contrario se suponen de manera implícita que están correlacionados unos con otro, es decir que existe una dependencia espacial. Esto indica que más cercanos estén situados dos puntos están mas correlacionados y mientras más separados hay menos relación entre estos. \cite{notas_clase2}
+
+Para llevar a cabo esta fase, se usan tres funciones: El semivariograma, el covariograma y el correlograma. (Heano, 2011) \cite{giraldo}  
+
+\paragraph{Variograma y Semivariograma}
+
+El variograma, denotado por $ 2\gamma(h)$, se define como la varianza de la diferencia entre variables separadas por una distancia $h = ||s_i - s_j||$
+
+Cuando se asume que la varianza de los incrementos de la variable regionalizada es finita, se le define como variograma denotada por $2\gamma(h)$ 
+
+\begin{equation*}
+\begin{aligned}
+   2\gamma(h) & = V(Z(\chi + h)) - Z(\chi))\\
+  & = E((Z(x + h) - Z(x))^2) - (E(Z(X + h) - Z(x)))^2 \\
+  & = E((Z(x + h) - Z(x))^2)
+\end{aligned}
+\end{equation*}
+
+La mitad del variograma $\gamma(h)$, se conoce como la función de semivarianza y caracteriza las propiedades de dependencia espacial de un fenómeno espacial. 
+
+Esta función es usualmente empleada para tratar datos de un fenómeno con continuidad espacial (datos geoestadísticos). 
+
+\begin{equation*}
+\begin{aligned}
+   \gamma(h)  = \frac{\Sigma(Z(x + h) - Z(x))^2}{2n}
+\end{aligned}
+\end{equation*}
+
+
+donde $\gamma(h) $ es el valor de la variable en un sitio $\chi$, $\Sigma(Z(\chi + h) $ es otro valor muestral separado del anterior por una distancia $h$ y $n$ es el número de parejas que se encuentran separas por dicha distancia. La función de semivarianza se calcula para varias distancias $h$. En la práctica, debido a irregularidad en el muestreo y por ende en las distancias entre los sitios, se toman intervalos de distancia $[0,h], (h,2h], (2h, 3h]$... y el semivariograma experimental corresponde a una distancia promedio entre parejas de sitios dentro de cada intervalo y no a una distancia $h$ específica. El número de parejas de puntos $n$ dentro de los intervalos no es constante.
+
+Para interpretar el semivariograma experimental se parte del criterio de que a menor distancia entre los sitios mayor similitud o correlación espacial entre las observaciones. Por ello en presencia de autocorrelación se espera que para valores de h pequeños el semivariograma experimental tenga magnitudes menores a las que este toma cuando las distancias h se incrementan.
+
+Debido a que la solución del problema de predicción espacial requiere del conocimiento de la estructura para cualquier posible distancia entre sitios dentro del área de estudio, pero el semivariograma muestral es calculado sólo para algunas distancias promedios particulares, se hace necesario el ajuste de modelos que generalicen la dependencia espacial para cualquier distancia. Este proceso lo hacemos en la siguiente etapa: el modelamiento del semivariograma. 
+
+
+
+
+\paragraph{Covariograma}
+La función de covarianza muestral entre parejas de observaciones que se encuentran separadas por
+una distancia $h$ es calculada haciendo uso de la fórmula clásica de covarianza muestral 
+
+$$C(h)= COV (Z(x+h), Z(x)) = \frac{\Sigma_{i=1}^n (Z(x+h)-m)(Z(x)-m)}{n} $$
+
+$$ C(h) = \frac{\Sigma_{i=1}^n (Z(x+h) \cdot Z(x))}{n} - m^2$$
+
+ donde $m$ hace referencia al valor promedio en todos los puntos de la zona de estudio y el número de parejas que cumplen con la distancia establecida.
+ 
+ \paragraph{correlograma}
+ Tomando este comportamiento como estacionario y usando la varianza muestral para estimar la varianza de la variable, se puede definir de la siguiente
+manera el correlograma muestral. (Henao, s.f) \cite{henao_2015}
+
+$$ r(h) = \frac{COV (Z(x+h) , Z(x))}{S_{x+h} \cdot S_x} = \frac{C(h)}{S_x^2} = \frac{C(h)}{C(O)}$$
+
+
+\subsubsection{Estimación del variograma}
+
+\paragraph{Estimador clásico}
+Este estimador, propuesto por Matheron (1962); es considerado el más sencillo y su obtención se hace
+mediante el estimador del método de momentos. Asumiendo la hipótesis de existencia de
+estacionariedad intrínseca, la media del proceso constante y que los puntos de muestreo ${s_1, ..., s_n}$
+están localizados sobre una rejilla regular; la definición del método de momentos, viene dada por
+
+\begin{equation*}
+\begin{aligned}
+   2\hat{\gamma}(h)  = \frac{1}{|N(h)|}\Sigma_{(s_i, s_j) \in N(h)}  (Z(s_i) - Z(s_j))^2
+\end{aligned}
+\end{equation*}
+ 
+Donde $N(h)$ hace referencia a todas las parejas cuya distancia es igual a $h$. En este proceso no hace necesario estimar la media $\mu$.
+
+Debido al hecho de no ser robusto, este es un estimador no paramétrico que solo se considera óptimo
+en aquellos casos donde se disponga de una malla regular de muestreo representativa y con una
+distribución normal. En ocasiones la aplicación de este estimador genera variogramas experimentales
+erráticos, generalmente por variaciones del caso ideal para su aplicación, como lo son, distribuciones
+alejadas de la normalidad, heterocedasticidad o existencia de atípicos. (Melo, 2012)
+
+En el caso del covariograma, el estimador del método de momentos se define como
+
+\begin{equation*}
+\begin{aligned}
+   \hat{C}(h)  = |N(h)| \Sigma_{(s_i, s_j) \in N(h)}  (Z(s_i) - \hat{Z}) (Z(s_j) - \hat{Z})
+\end{aligned}
+\end{equation*}
+
+Donde $\hat{Z}$ es un estimador de la media $\mu$ del proceso.
+
+\paragraph{Estimador robusto}
+
+Propuesto por Cressie & Hawkins en 1980, este posee mayor robustez como estimador insesgado del variograma y se define por medio de
+\begin{equation*}
+\begin{aligned}
+   2\hat{\gamma}(h)  = \frac{1}{|N(h)| (0.457 + 0.494/ |N(h)| ) }\Sigma_{(s_i, s_j) \in N(h)}  |Z(s_i) - Z(s_j)|^{1/2}
+\end{aligned}
+\end{equation*}
+
+Donde los coeficientes cumplen con la función de garantizar la insesgadez de este estimador. (Melo, 2012) \cite{melo}
+
+\subsubsection{Estimación de los parámetros del variograma}
+
+Los semivariogramas estimados $\hat{\gamma}(h)$
+carecen de la propiedad de ser semidefinidos positivos, lo que
+abre la posibilidad a que algunas predicciones espaciales generadas con estos tengan varianzas
+negativas. La forma más común de evitar esto es reemplazando el semivariograma empírico por un
+modelo paramétrico definido como $\gamma(h,v)$
+el cual se aproxime a la dependencia espacial encontrada
+por el semivariograma empírico y a su vez cumpla con la condición de ser semidefinido positivo. El
+objetivo de esto será elegir el modelo que mejor se ajuste al conjunto de observaciones para ser
+utilizado en el proceso de predicción.
+
+\paragraph{Estimación por mínimos cuadrados}
+
+Al estimar por mínimos cuadrados ordinarios (OLS), se busca la obtención del valor de $\hat{v}$ que minimice 
+
+$$\Sigma_{j=1}^n = (\hat{\gamma(h_j) - \gamma(h_j, v)}^2) = [\hat{\gamma} - \gamma(v)]' [\hat{\gamma}-\gamma(v)]$$
+
+Un problema presentando en la aplicación de este procedimiento es la presencia de autocorrelación en
+las estimaciones y la existencia de varianzas diferentes. La solución por mínimos cuadrados
+generalizados (GLS), busca minimizar
+$$\hat{\gamma}-\gamma(v) V(v)^{-1}[\hat{\gamma}-\gamma(v)]$$
+
+Donde $V(v)$ es la matriz de varianzas covarianzas de $\hat{\gamma}$, dependiendo de que el valor de $v$ sea conocido y sus elementos pueden ser dificiles de encontrar. 
+
+Finalmente la estimación por mínimos cuadrado ponderados (WLS), se basa en minimizar 
+
+$$\Sigma_{j=1}^n w_j[\hat{\gamma}(h_i) - \gamma(h_j,v)]^2 = [\hat{\gamma}-\gamma(v)]' W(v)^{-1}[\hat{\gamma}-\gamma(v)]$$
+
+Donde $W(v)$ es una matriz diagonal con las varianzas de $\hat{\gamma}$, mientras que los pesos vienen
+contenidos en $W_j$ existen diferentes ponderaciones para el ajuste del semivariograma pertenecientes a
+la librería gstat. La estimación por mínimos cuadrados ponderados es la más utilizada debido a su
+facilidad de implementación. (Melo, 2015)\cite{melo_2015}
+
+
+
+

@@ -1,18 +1,55 @@
 
 \section{Geoestadística}
 
+La Geoestadística es un conjunto de técnicas usadas para analizar y predecir valores de una propiedad distribuida en espacio o tiempo. En contraposición con la estadística clásica o
+convencional, tales valores no se consideran independientes, por el contrario se suponen de manera implícita que están correlacionados unos con otros, es decir que existe una dependencia espacial.  \cite{notas_clase2}
 
 Las ubicaciones $s$ provienen de un conjunto $D$ continuo  y son seleccionadas
 a juicio del investigador ($D$ fijo), es decir que el investigador puede hacer selección de puntos del espacio a conveniencia o seleccionar los sitios bajo algún esquema de muestro probabilístico. Algunos ejemplos  son: Niveles de un contaminante en diferentes sitios de una
 parcela, contenidos auríferos de una mina, valores de precipitación en Colombia medida en
-las diferentes estaciones meteorológicas en un mes dado o los niveles piezométricos de un
-acuífero. En los ejemplos anteriores es claro que hay continuidad espacial, puesto que en
-cualquier sitio de la parcela, de la mina, de Colombia o del acuífero pueden ser medias las
+las diferentes estaciones meteorológicas en un mes dado. En los ejemplos anteriores es claro que hay continuidad espacial, puesto que en cualquier sitio de la parcela de la mina de Colombia pueden ser medias las
 correspondientes variables.
 
-Es importante resaltar que en geoestadística el propósito esencial es la interpolación y si no hay continuidad espacial pueden hacerse predicciones carentes de sentido. \cite{giraldo}
+Es importante resaltar que en geoestadística el propósito esencial es la interpolación y si no hay continuidad espacial pueden hacerse predicciones carentes de sentido. Por ejemplo si la variable medida es producción de café en las fincas
+cafeteras del departamento del Quindío, hacer interpolación espacial y realizar un mapa de
+distribución de la producción cafetera puede ser carente de sentido porque podrían hacerse
+predicciones sobre áreas urbanas o no cultivadas con café. (Henao, 2011) \cite{giraldo}
 
-Cuando el objetivo es hacer predicción, se realiza dos etapas: análisis estructural (describir la correlación en puntos del espacio) y la segunda etapa es la predicción en sitios no muestrarios por medio de Kriging (proceso que calcula el promedio ponderado de las observaciones muestrales). Los pesos asignados a los valores muestrales son apropiadamente determinados por la estructura espacial de correlación establecida en la primera etapa y por la configuración de muestro (Petitgas, 1996 citado por \cite{giraldo})
+\subsection{Etapas del análisis geoestadístico}
 
-La primera etapa en el desarrollo de un análisis geoestadístico es la determinación de la dependencia espacial entre los datos medidos de una variable. Esta fase es también conocida como análisis estructural. \cite{giraldo}
+\subsubsection{Identificar el problema}
+La Geoestadística brinda herramientas bastante fuertes para solucionar problemas o desarrollar estudios, desde este punt de vista. una etapa previa para desarrollar un trabajo geoestadístico es la concepción de un problema; si no existe un problema que requiera una solución y que sea susceptible de ser tratado con las técnicas geoestadísticas, el desarrollo de las etapas posteriores no tienen sentido.
+
+\subsubsection{Obtención de datos}
+Una vez identificado el problema, la primera etapa para realizar el análisis es la toma u
+obtención de una serie de datos, que proporcionen información del problema o que tengan
+alguna relación con este. En esta etapa es importante analizar la calidad y cantidad de datos
+que se requieren para resolver el problema o desarrollar el estudio y así mismo, es necesario
+conocer la fuente de los datos y en general los metadatos. 
+
+\subsubsection{Análisis exploratorio}
+
+La parte exploratorio se basa en técnicas estadísticas convencionales (cálculo de media, mediana, obtención de histogramas, análisis de rangos intercuartílicos y de desviaciones estándar, etc) que permiten obtener todo un conjunto de información, desconocida a priori sobre la muestra bajo estudio, que es imprescindible para realizar "correctamente" cualquier análisis estadístico y en particular un análisis geoestadístico.  \cite{notas_clase2}
+
+\input{teoria/g_analisis_estructural.tex}
+\input{teoria/g_modelo_semivarianza.tex}
+\input{teoria/g_metodos_interpolacion.tex}
+
+\subsubsection{Selección de interpolación}
+La selección del
+método por medio de una validación cruzada. Con los métodos Kriging cuando se hace un pronóstico se obtiene como resultado el mismo
+valor que se observó por lo que en principio la evaluación de los errores al realizar
+pronósticos se dificulta.
+La validación cruzada consiste en quitar un punto considerado en el modelamiento del
+semivariograma para realizar los pronósticos apoyados en los métodos de interpolación,
+con esto se genera un error que se asocia al coeficiente de determinación, $R^2$ , en
+econometría. 
+
+\subsubsection{Mapas y Análisis}
+
+Una vez se ha evaluado el buen ajuste del modelo de semivarianza a los datos y se ha
+verificado la bondad de los datos obtenidos con los métodos de interpolación, se elaboran salidas como los mapas de probabilidad y de desviaciones estándar, acompañados de su interpretación y análisis.
+
+
+
 

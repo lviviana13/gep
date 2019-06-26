@@ -1,0 +1,129 @@
+\section{Introducción}
+
+Se presentan los registros de la temperatura media terrestre de Croacia referente al --------día 13 de marzo de 2008------, los cuales fueron sometidos a un tratamiento estadístico mediante pruebas de
+normalidad, tendencia y anisotropía, que fueron evaluadas previamente para finalmente realizar el
+ajuste del variograma. El procedimiento se llevó a cabo en el software R.
+
+
+\section{Objetivo}
+
+Realizar el ajuste del variograma a través del modelamiento de la variación espacial para los registros de la temperatura media terrestre diaria de Croacia.
+
+\subsection{Objetivos Específicos}
+
+\begin{itemize}
+    \item Elaborar un análisis exploratorio mediante pruebas (normalidad, tendencia y anisotropía),
+observando y valorando el comportamiento de los registros para la respectiva elección del
+modelo.
+
+\end{itemize}
+
+\section{Justificación}
+
+El cambio climático se ha convertido en una gran preocupación que afecta a todo el globo debido a las consecuencias que traerá a generaciones futuras. Este, implica el incremento de condiciones extremas
+que se traducen en sequías, olas de calor, inundaciones, entre otros.  (Stott et al. \cite{stott_ea})
+
+La  correcta  evaluación  de  los  distintos  elementos  del  tiempo  atmosférico  y  del  clima  requiere cada día mayor precisión. Además del propio interés científico, el contar con información meteorológica depurada y representada espacialmente, teniendo en cuenta las peculiaridades morfológicas de la región en la que incide, interviene positivamente en numerosas tareas de planificación hidrológica, agrícola, urbanística, etc. dicha  información  procede  en  gran  medida  de  redes  meteorológicas  de  superficie,  de  densidad  frecuentementebaja  y  ubicación  preferente  en  fondos  de  valle,  lo  que  obliga  a  emplear  algoritmos  de  estimación  espacial  para acercarse a la realidad meteorológica en aquellas zonas no muestreadas. (Hernan, 2000 \cite{hernan_ea})
+
+\\
+El   objetivo   del   presente   estudio para nuestro caso, la implementación del tratamiento estadístico
+(análisis exploratorio) y técnicas geoestadísticas, permiten estimar el comportamiento de la
+temperatura a partir de 158 registros de estaciones meteorológicas localizadas en la superficie de Croacia
+
+\section{Estado del arte}
+
+Según ( Socha, s.f)  \cite{temp_boyaca}  las  técnicas  de  predicción  geoestadisticas  proveen  la  correcta  manera  de analizar  fenómenos  naturales  que  ocurren  en  una  determinada  extensión  geográfica  logrando predecir  información  de  áreas  en  las  que  no  se  tiene    mediciones  y  de  esta  manera  extender  la cobertura  del  estudio  para  toda  el  área  de  interés, en el estudio realizado por (Sanchéz, 2011) \cite{sanchez_ea} estudia la estimación de la temperatura media anual  en  la  región  sureste  del  estado  de  Coahuila  a  través  de  21  estaciones  climatológicas  dependientes del Servicio Meteorológico Nacional, seleccionando  para la interpolación Kriging  el  modelo  Gaussiano, 
+( Socha, s.f) \cite{temp_boyaca}  por su parte mediante el  ``análisis tendencial de la variación climática `Temperatura y precipitación' espacio-temporal del departamento de Boyacá''  realizó el análisis a series  de  tiempo  de  29 estaciones meteorológicas del Departamento de Boyacá, con registros que datan de 1997 y 2001  generó los Mapas de tendencia de la variable de Temperatura y teniendo en cuenta que la muestra se clasificó como paramétrica se utilizó el Método de Kriging Disyuntivo ya que es el único método que maneja el software (ArcGis) para los datos con distribución paramétrica. Este método requiere de hacer fuertes premisas asumiendo que todos los pares de datos vienen en una distribución normal bivariada. Para la generación de los Mapas de tendencia de la variable de Precipitación y teniendo en cuenta que la muestra se clasificó como No Paramétrica se utilizó el
+Método de Kriging Ordinario ya que es un buen método para analizar datos no paramétrico. 
+
+En este caso, el análisis de la correlación espacial nos confirma la relación e influencia entre las variables precipitación y temperatura. El resultado del análisis realizado a las 29 estaciones meteorológicas en el Departamento de Boyacá se evidencian de forma espacial mediante los mapas de tendencia los cuales nos permiten ver de forma clara el comportamiento de la variable tanto espacialmente como temporalmente ya que al hacer la comparación entre los dos años de la misma variable se pueden
+evidenciar claramente los cambios presentes o no en los dos periodos de tiempo analizados.
+
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.4]{proyectos/proyecto_geoestadistica_croacia/images/ea_hernan_mp.png}
+    \caption{ a) Modelo digital de elevaciones de la C.A. del País Vasco; b) gráfica de dispersión elevación-temperatura muestral; c) mapa de temperatura estimada por KO (W(u) = 8); d) gráfica de dispersión elevación-temperatura estimada}
+    \label{ea_hernan}
+\end{figure}
+\\
+ (Hunter & Meentemeyer, 2005) \cite{ea_hunter}  en el caso de estudio ``Mapeo Climatológico asistido de la Precipitación y Temperatura Diaria." presenta el método PRISM que permite mapear las condiciones climáticas diarias que integra una red de observaciones de punto de estación base con mapas de clima de promedio a largo plazo, este método supone que la elevación es uno de los factores más importantes que controlan los patrones de temperatura y humedad del paisaje, y utiliza la regresión lineal para estimar la variabilidad climática dentro de las orientaciones topográficas locales, y el kriging ordinario permitiendo interpolar las observaciones puntuales de la red de estaciones base meteorológicas, para el caso de estudio utilizo  la base de datos del Centro Nacional de Datos Climáticos (NCDC) de la Administración Nacional Oceánica y Atmosférica (NOAA) que contiene 24 años de parámetros climáticos diarios (1980-2003) en 779 ubicaciones de puntos en el condado de California, teniendo como resultado para temperaturas máximas y mínimas modelos que predijeron 92\% y 89\% de la variación en los valores diarios observados, respectivamente.
+
+
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.4]{proyectos/proyecto_geoestadistica_croacia/images/ea_galicia.png}
+    \caption{Modelo de elevación digital (MDE) de Galicia y localización geográfica de las 151 estaciones meteorológicas que proporcionaron datos continuos en el año 2011}
+    \label{ea_galicia}
+\end{figure}
+
+
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.4]{proyectos/proyecto_geoestadistica_croacia/images/ea_henao_i.png}
+    \caption{Correlación de la temperatura con la elevación y las direcciones N-S y E-W durante el día 24/04/99, y tomas diezminutarias seleccionadas}
+    \label{ea_hernan_i}
+\end{figure}
+
+\\
+Por otro lado, (Hernan, 2000) \cite{hernan_ea} el caso de estudio ``Estimación Espacial de la Temperatura del Aire mediante Kriging con Deriva Externa''  se realizó la estimación  de  la  temperatura  del  aire  introduciendo  la  elevación del  terreno  como  información  secundaria, (ver figura \ref{ea_hernan_i}) según los resultados se aplico KO, KT y KDE a las tomas diezminutarias seleccionadas, repitiendo el proceso para  dos  vecindarios  de  diferente  tamaño,  compuestos  por  8  y  16  estaciones, y realizando la comparación de los métodos mediante  validación  cruzada, obtuvo que  los  métodos  univariados  ofrecen mejores  resultados  que  el  KDE  siempre  que  el  coeficiente  de  correlación  entre  la  elevación  y  la temperatura sea inferior a 0.9.  Sin  embargo,  esta conclusión puede  llevar  a  engaño  a  la  hora  de  cartografiar  la temperatura, ya que los mapas (ver figura \ref{ea_hernan}) producidos mediante KO o KT no son satisfactorios en las zonas de montaña, donde la densidad de las estaciones no es suficiente para reproducir los complejos patrones espaciales que se dan entre ambas variables, es entonces donde  el kriging  con  deriva  externa  KDE, estimador  que  incorpora  datos secundarios exhaustivamente muestreados para la caracterización de la tendencia espacial del atributo primario, se presenta como mejor método ya que la  inclusión  de  la  elevación  del  terreno  mejora  significativamente  la  representación  espacial de  la  temperatura  sensor izada, al  ser  un  atributo  secundario  altamente muestreado,   introducido   en   forma   de   MDE,   complementa   las   lagunas   muestrales   de   la   red termométrica.
+
+
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.6]{proyectos/proyecto_geoestadistica_croacia/images/ea_galicia_di.png}
+    \caption{Interpolación de la temperatura en Galicia mediante el método de distancias inversas para enero en el año de 2011}
+    \label{ea_galicia_di}
+\end{figure}
+
+
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.6]{proyectos/proyecto_geoestadistica_croacia/images/ea_galicia_ko.png}
+    \caption{Interpolación de la temperatura en Galicia mediante el método de krigeado ordinario para enero con sus respectivos mapas de errores}
+    \label{ea_galicia_ko}
+\end{figure}
+
+
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.6]{proyectos/proyecto_geoestadistica_croacia/images/ea_galicia_coko.png}
+    \caption{Interpolación  de  la  temperatura  en  Galicia  mediante  el  método  del  co-krigeado  ordinario  para  enero de  2011  con  sus  respectivos  mapas  de  errores}
+    \label{ea_galicia_coko}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.6]{proyectos/proyecto_geoestadistica_croacia/images/ea_galicia_kde.png}
+    \caption{ Interpolación de la temperatura en Galicia mediante el método del krigeado con  deriva  externa  para  enero de  2011  con  sus  respectivos  mapas  de  errores}
+    \label{ea_galicia_kde}
+\end{figure}
+
+Para le caso de (Machado, 2017 \cite{galicia_ea}) en ``Variabilidad Espacial de la Temperatura  en Galicia a Escala Mensual'' (ver figura \ref{ea_galicia}) concluyeron que  la cartografía de la temperatura por el método de las distancias inversas (ver figura \ref{ea_galicia_di}) puso de manifiesto que dicho método puede ser adecuado para una rápida caracterización de la temperatura.  Sin  embargo,  los  mapas  obtenidos  mediante  este  método,  en  general  presentan  un  aspecto  caracterizado  por  la  presencia  de  discontinuidades  o  anomalías  espaciales, con respecto a los  semivariogramas  ajustados  a  las  series  de  temperatura  media  mensual  presentaron meseta bien definida y un fuerte grado de dependencia espacial, dado por la relación entre el efecto pepita y la varianza estructurada, donde el  tipo  de  semivariograma  más  frecuentemente  empleado para modelizar la temperatura mensual fue el esférico, pero en algunos meses se ajustaron modelos exponenciales y gausssianos. La magnitud del efecto pepita oscila entre valores de 0 y 20\% con respecto al valor de la meseta, y afirman que el  mejor  método  de  interpolacíon (ver figuras \ref{ea_galicia_ko}, \ref{ea_galicia_coko}, \ref{ea_galicia_kde}) resultó  ser  el  Krigeado  con  deriva  externa  (KED),   comprobándose  que  representa  el  efecto  del  relieve  sobre  la  temperatura  adecuadamente y que los errores de las estimaciones son del mismo orden de magnitud que  lo  obtenidos  por  los  dos  restantes  métodos  geoestadísticos  empleados. 
+
+\\
+ (Vicente & Sanchéz, 2002 \cite{vicente_ea})  analiza la calidad final de diferentes cartografías continuas
+de precipitaciones y temperaturas realizadas a partir de distintos métodos de interpolación, en el sector central del valle del Ebro, un espacio de topografía suave pero dominado por complejos patrones climáticos, encontró que los mejores resultados en la cartografía de precipitaciones se han obtenido mediante la aplicación de métodos
+geoestadísticos, en concreto las técnicas de block-kriging y cokriging, por otro lado (Marcelino & Ed, S.f \cite{marcelino_ea})  con el objetivo de determinar  cuales  son  los  mejores parámetros    para    realizar    una    interpolación    de temperaturas y precipitaciones,  en  dos  de  los métodos  de  interpolación  más  comunes:  “Ordinary Kriging”    (OK)    y    “Universal    Kriging”    (UK), concluyeron que la mejor interpolación para temperaturas en la región de Extremadura es la que se realiza con el método de interpolación  “Universal  Kriging”,  con  un  modelo de  variograma  esférico  y  con  cualquier  valor  de pepita  que  se  le  asigne. 
+
+
+
+
+
+
+\section{Descripción de datos}
+
+La base de datos suministrada tiene como zona de estudio Croacia (Europa), y contiene la información
+de la temperatura media terrestre diaria registrada en 158 estaciones meteorológicas, distribuidas de la siguiente manera
+
+
+%%%%%%%MAPA CON ESA MONDA
+
+Las variables a tratar se describen a continuación
+
+
+
+
+
+        
+
+
